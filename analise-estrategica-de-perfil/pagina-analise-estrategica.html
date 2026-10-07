@@ -201,19 +201,16 @@
 .amm-item h3{font-size:1.05rem}
 .amm-item p{font-size:.94rem}
 
-/* 5. Para quem é: celular decorativo */
-.amm-celular{
-  width:200px;margin:0 auto;padding:12px;border-radius:36px;background:var(--amm-vinho);
-  box-shadow:0 30px 50px rgba(103,27,41,.22);transform:rotate(-4deg);
+/* 5. Para quem é: foto da Mel com o iPad */
+.amm-foto-ipad{position:relative;max-width:320px;width:100%;margin:0 auto}
+.amm-foto-ipad::before{
+  content:"";position:absolute;inset:0;transform:translate(14px,14px);
+  background:var(--amm-rosa-medio);border-radius:24px;
 }
-.amm-celular-tela{background:var(--amm-rosa);border-radius:26px;padding:26px 16px 18px;text-align:center}
-.amm-celular-tela img{width:54px;margin:0 auto 10px}
-.amm-celular-nome{font-family:var(--amm-titulo);font-style:italic;color:var(--amm-vinho);font-size:1.05rem;line-height:1.25}
-.amm-celular-linha{height:6px;border-radius:6px;background:var(--amm-rosa-borda);margin:12px auto 0;width:80%}
-.amm-celular-linha + .amm-celular-linha{width:60%;margin-top:6px}
-.amm-celular-grade{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-top:16px}
-.amm-celular-grade span{aspect-ratio:1;background:var(--amm-branco);border-radius:4px}
-.amm-celular-grade span:nth-child(odd){background:var(--amm-rosa-medio)}
+.amm-foto-ipad img{
+  position:relative;width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:24px;
+  background:var(--amm-rosa-medio);
+}
 
 /* 6. Passos */
 .amm-passos{display:grid;gap:22px;margin-top:8px}
@@ -285,7 +282,7 @@
   .amm-situacoes{grid-template-columns:1fr 1fr}
   .amm-item{width:25%}
   .amm-ganhos{grid-template-columns:1fr 1fr}
-  .amm-celular{width:260px}
+  .amm-foto-ipad{max-width:420px}
   .amm-hero-foto{max-width:420px}
   .amm-sobre-foto{max-width:400px}
 
@@ -424,16 +421,10 @@
   <!-- 5. PARA QUEM É -->
   <section class="amm-secao amm-secao--branca">
     <div class="amm-container amm-duas">
-      <div class="amm-celular" aria-hidden="true">
-        <div class="amm-celular-tela">
-          <!-- PENDENTE: troque o src pela URL da abelha na Biblioteca de Mídia -->
-          <img src="imagens/abelha.png" alt="" width="160" height="126" loading="lazy">
-          <p class="amm-celular-nome">Análise Estratégica de Perfil</p>
-          <div class="amm-celular-linha"></div>
-          <div class="amm-celular-linha"></div>
-          <div class="amm-celular-grade"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-        </div>
-      </div>
+      <figure class="amm-foto-ipad">
+        <!-- PENDENTE: troque o src pela URL da foto na Biblioteca de Mídia (arquivo imagens/foto-mel-ipad.webp) -->
+        <img src="imagens/foto-mel-ipad.webp" alt="Melanie Fernanda analisando um perfil no iPad" width="800" height="1000" loading="lazy">
+      </figure>
       <div>
         <h2>Essa análise é <em>para você</em> que…</h2>
         <ul class="amm-lista">
@@ -547,8 +538,7 @@
         <p>Meu objetivo é te ajudar a entender o que faz sentido para o seu negócio e transformar essa compreensão em ações práticas.</p>
       </div>
       <figure class="amm-sobre-foto">
-        <!-- PENDENTE: troque o src pela URL da foto na Biblioteca de Mídia (arquivo imagens/foto-mel-sobre.webp).
-             Se quiser, use aqui uma segunda foto sua, diferente da foto do topo. -->
+        <!-- PENDENTE: troque o src pela URL da foto na Biblioteca de Mídia (arquivo imagens/foto-mel-sobre.webp) -->
         <img src="imagens/foto-mel-sobre.webp" alt="Melanie Fernanda, estrategista digital da A Mel do MKT" width="800" height="1000" loading="lazy">
       </figure>
     </div>
