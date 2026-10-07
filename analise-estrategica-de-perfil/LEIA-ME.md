@@ -9,14 +9,16 @@
 
 ## Como publicar no WordPress
 
+O link de pagamento da Kiwify já está nos 5 botões.
+
+
 1. Envie todos os arquivos da pasta `imagens` para **Mídia > Adicionar nova** e copie a URL de cada uma.
 2. Crie uma página e escolha um modelo de **largura total / sem barra lateral** (o nome varia conforme o tema).
 3. Adicione um bloco **HTML personalizado** (ou o widget HTML no Elementor).
 4. No arquivo `.html`, copie tudo entre `INÍCIO` e `FIM` e cole no bloco.
 5. Procure por `PENDENTE` e substitua:
-   - `INSERIR-LINK-DE-PAGAMENTO` pelo link de pagamento (aparece em 5 botões; use "Substituir tudo").
    - `imagens/logo-a-mel-do-mkt.png`, `imagens/abelha.png`, `imagens/foto-mel-topo.webp`, `imagens/foto-mel-ipad.webp` e `imagens/foto-mel-sobre.webp` pelas URLs da Biblioteca de Mídia.
-6. Para ativar um bloco pendente (informações operacionais, perguntas de agendamento e cancelamento, links do rodapé): preencha os campos, apague a linha que começa com `<!-- PENDENTE` e a linha `FIM DO BLOCO PENDENTE -->`.
+6. Para ativar um bloco pendente (plataforma do encontro, pergunta de cancelamento e reagendamento, links do rodapé): preencha os campos, apague a linha que começa com `<!-- PENDENTE` e a linha `FIM DO BLOCO PENDENTE -->`.
 
 Todo o estilo fica dentro da classe `.amm`, então não altera o restante do tema. A página não usa JavaScript; as perguntas frequentes abrem e fecham com recurso nativo do navegador.
 
