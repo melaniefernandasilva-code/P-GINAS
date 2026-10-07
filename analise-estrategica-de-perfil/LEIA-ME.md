@@ -4,18 +4,18 @@
 
 - `pagina-analise-estrategica.html`: a página completa. Abra no navegador para visualizar.
 - `imagens/logo-a-mel-do-mkt.png`: logo oficial recortada, com fundo transparente, sem alteração de proporção.
+- `imagens/foto-mel-topo.webp` e `imagens/foto-mel-sobre.webp`: sua foto otimizada para a web (a segunda com um enquadramento mais próximo).
 - `imagens/abelha.png`: a abelhinha da própria logo, usada como detalhe em poucas seções.
 
 ## Como publicar no WordPress
 
-1. Envie `logo-a-mel-do-mkt.png`, `abelha.png` e as suas fotos para **Mídia > Adicionar nova** e copie a URL de cada uma.
+1. Envie todos os arquivos da pasta `imagens` para **Mídia > Adicionar nova** e copie a URL de cada uma.
 2. Crie uma página e escolha um modelo de **largura total / sem barra lateral** (o nome varia conforme o tema).
 3. Adicione um bloco **HTML personalizado** (ou o widget HTML no Elementor).
 4. No arquivo `.html`, copie tudo entre `INÍCIO` e `FIM` e cole no bloco.
 5. Procure por `PENDENTE` e substitua:
    - `INSERIR-LINK-DE-PAGAMENTO` pelo link de pagamento (aparece em 5 botões; use "Substituir tudo").
-   - `imagens/logo-a-mel-do-mkt.png` e `imagens/abelha.png` pelas URLs da Biblioteca de Mídia.
-   - `INSERIR-URL-DA-FOTO-DO-TOPO` pela foto da abertura e `INSERIR-URL-DA-FOTO-DA-MEL` pela foto da seção sobre você (podem ser fotos diferentes).
+   - `imagens/logo-a-mel-do-mkt.png`, `imagens/abelha.png`, `imagens/foto-mel-topo.webp` e `imagens/foto-mel-sobre.webp` pelas URLs da Biblioteca de Mídia.
 6. Para ativar um bloco pendente (informações operacionais, perguntas de agendamento e cancelamento, links do rodapé): preencha os campos, apague a linha que começa com `<!-- PENDENTE` e a linha `FIM DO BLOCO PENDENTE -->`.
 
 Todo o estilo fica dentro da classe `.amm`, então não altera o restante do tema. A página não usa JavaScript; as perguntas frequentes abrem e fecham com recurso nativo do navegador.
