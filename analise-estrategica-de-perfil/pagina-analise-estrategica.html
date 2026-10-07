@@ -17,7 +17,6 @@
        1. Link de pagamento: já inserido nos 5 botões (Kiwify)
        2. URL da logo e da abelha na Biblioteca de Mídia do WordPress
        3. URL das fotos da Mel na Biblioteca de Mídia
-       5. Pergunta frequente sobre cancelamento e reagendamento
        6. Rodapé: contato, política de privacidade e termos
      ===================================================================== -->
 
@@ -262,7 +261,9 @@
 }
 .amm-faq details[open] summary::after{content:"\2212"}
 .amm-faq summary:focus-visible{outline:2px solid var(--amm-vinho);outline-offset:4px;border-radius:8px}
-.amm-faq details p{padding:0 0 20px}
+.amm-faq details p{padding:0}
+.amm-faq details p:last-child{padding-bottom:20px}
+.amm-faq details p + p{margin-top:10px}
 
 /* 12. Encerramento e rodapé */
 .amm-final h2{max-width:780px;margin-left:auto;margin-right:auto}
@@ -597,13 +598,12 @@
           <summary>Como funciona o agendamento?</summary>
           <p>Após a confirmação do pagamento, eu entro em contato com você pelo WhatsApp e te envio o formulário. Assim que você me devolver o formulário preenchido, agendamos o encontro conforme as datas disponíveis na agenda, a partir de 5 dias úteis depois da entrega. Esse é o tempo que eu preciso para estudar o seu perfil e preparar a análise.</p>
         </details>
-        <!-- PENDENTE: publique esta pergunta somente quando a resposta estiver definida.
-             Para exibir, preencha, apague esta linha de aviso e a linha "FIM DO BLOCO PENDENTE".
         <details>
           <summary>Quais são as condições de cancelamento e reagendamento?</summary>
-          <p>[INSERIR AS CONDIÇÕES DEFINIDAS]</p>
+          <p><strong>Reagendamento:</strong> você pode reagendar o encontro uma vez, sem custo, avisando pelo WhatsApp com pelo menos 24 horas de antecedência.</p>
+          <p><strong>Falta sem aviso:</strong> o encontro será considerado realizado e você receberá o PDF da sua análise.</p>
+          <p><strong>Cancelamento:</strong> pode ser solicitado em até 7 dias após a compra, desde que a análise ainda não tenha sido realizada. Depois que o encontro acontece, não há cancelamento. Você recebe o PDF com o diagnóstico completo e a gravação do nosso encontro para assistir quantas vezes precisar.</p>
         </details>
-        FIM DO BLOCO PENDENTE -->
       </div>
     </div>
   </section>
