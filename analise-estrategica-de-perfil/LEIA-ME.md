@@ -9,7 +9,7 @@
 
 ## Como publicar no WordPress
 
-O link de pagamento da Kiwify já está nos 5 botões.
+O link de pagamento da Kiwify, o Instagram e o WhatsApp já estão na página.
 
 
 1. Envie todos os arquivos da pasta `imagens` para **Mídia > Adicionar nova** e copie a URL de cada uma.
@@ -18,7 +18,6 @@ O link de pagamento da Kiwify já está nos 5 botões.
 4. No arquivo `.html`, copie tudo entre `INÍCIO` e `FIM` e cole no bloco.
 5. Procure por `PENDENTE` e substitua:
    - `imagens/logo-a-mel-do-mkt.png`, `imagens/abelha.png`, `imagens/foto-mel-topo.webp`, `imagens/foto-mel-ipad.webp` e `imagens/foto-mel-sobre.webp` pelas URLs da Biblioteca de Mídia.
-6. Para ativar um bloco pendente (plataforma do encontro, pergunta de cancelamento e reagendamento, links do rodapé): preencha os campos, apague a linha que começa com `<!-- PENDENTE` e a linha `FIM DO BLOCO PENDENTE -->`.
 
 Todo o estilo fica dentro da classe `.amm`, então não altera o restante do tema. A página não usa JavaScript; as perguntas frequentes abrem e fecham com recurso nativo do navegador.
 

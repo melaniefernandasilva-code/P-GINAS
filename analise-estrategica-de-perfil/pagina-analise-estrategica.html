@@ -13,11 +13,9 @@
      INÍCIO: COPIE DAQUI ATÉ "FIM" E COLE EM UM BLOCO "HTML PERSONALIZADO"
      DO WORDPRESS (ou widget HTML do Elementor).
 
-     CAMPOS PENDENTES: procure por "PENDENTE" neste arquivo.
-       1. Link de pagamento: já inserido nos 5 botões (Kiwify)
-       2. URL da logo e da abelha na Biblioteca de Mídia do WordPress
-       3. URL das fotos da Mel na Biblioteca de Mídia
-       6. Rodapé: contato, política de privacidade e termos
+     ÚNICO PASSO PENDENTE: procure por "PENDENTE" neste arquivo e troque o src
+     de cada imagem pela URL dela na Biblioteca de Mídia do WordPress
+     (logo, abelha e as três fotos da pasta "imagens").
      ===================================================================== -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -273,6 +271,7 @@
   display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;justify-content:center;text-align:center;
 }
 .amm-rodape .amm-logo{width:120px;margin:0}
+.amm-rodape p + p{margin-top:0}
 .amm-rodape-links{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 18px}
 .amm-rodape-links a{color:var(--amm-vinho);text-decoration:underline}
 
@@ -601,8 +600,8 @@
         <details>
           <summary>Quais são as condições de cancelamento e reagendamento?</summary>
           <p><strong>Reagendamento:</strong> você pode reagendar o encontro uma vez, sem custo, avisando pelo WhatsApp com pelo menos 24 horas de antecedência.</p>
-          <p><strong>Falta sem aviso:</strong> o encontro será considerado realizado e você receberá o PDF da sua análise.</p>
-          <p><strong>Cancelamento:</strong> pode ser solicitado em até 7 dias após a compra, desde que a análise ainda não tenha sido realizada. Depois que o encontro acontece, não há cancelamento. Você recebe o PDF com o diagnóstico completo e a gravação do nosso encontro para assistir quantas vezes precisar.</p>
+          <p><strong>Falta sem aviso:</strong> o encontro será considerado realizado e você receberá o PDF da sua análise e a gravação da apresentação.</p>
+          <p><strong>Cancelamento:</strong> pode ser solicitado em até 7 dias após a compra.</p>
         </details>
       </div>
     </div>
@@ -624,13 +623,10 @@
   <!-- RODAPÉ -->
   <footer class="amm-rodape">
     <p>© A Mel do MKT | Todos os direitos reservados</p>
-    <!-- PENDENTE: preencha os links do rodapé, apague esta linha de aviso e a linha "FIM DO BLOCO PENDENTE".
     <p class="amm-rodape-links">
-      <a href="[INSERIR-LINK-DE-CONTATO]">Contato</a>
-      <a href="[INSERIR-LINK-POLITICA-DE-PRIVACIDADE]">Política de privacidade</a>
-      <a href="[INSERIR-LINK-TERMOS-DE-USO]">Termos de uso</a>
+      <a href="https://www.instagram.com/ameldomkt/" target="_blank" rel="noopener">Instagram @ameldomkt</a>
+      <a href="https://wa.me/message/3KUMP3AS2BZGG1" target="_blank" rel="noopener">Fale comigo no WhatsApp</a>
     </p>
-    FIM DO BLOCO PENDENTE -->
     <!-- PENDENTE: troque o src pela URL da logo na Biblioteca de Mídia -->
     <img class="amm-logo" src="imagens/logo-a-mel-do-mkt.png" alt="A Mel do MKT" width="900" height="167" loading="lazy">
   </footer>
