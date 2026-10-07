@@ -14,9 +14,9 @@
      DO WORDPRESS (ou widget HTML do Elementor).
 
      CAMPOS PENDENTES: procure por "PENDENTE" neste arquivo.
-       1. Link de pagamento (4 botões)          -> INSERIR-LINK-DE-PAGAMENTO
+       1. Link de pagamento (5 botões)          -> INSERIR-LINK-DE-PAGAMENTO
        2. URL da logo e da abelha na Biblioteca de Mídia do WordPress
-       3. Foto da Mel (seção "Quem vai olhar para o seu perfil")
+       3. Fotos da Mel (topo da página e seção "Quem vai olhar para o seu perfil")
        4. Informações operacionais (formulário, agendamento, prazo, plataforma)
        5. Perguntas frequentes sobre agendamento e cancelamento/reagendamento
        6. Rodapé: contato, política de privacidade e termos
@@ -24,7 +24,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400;1,500;1,600&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
 /* Todo o estilo fica preso dentro de .amm para não interferir no tema. */
@@ -34,7 +34,8 @@
   --amm-texto:#343434;     /* cor dos textos */
   --amm-vinho:#671b29;     /* cor de apoio */
   --amm-vinho-escuro:#4f1420; /* SUGESTÃO: hover do botão */
-  --amm-rosa-borda:#f3d3e6;   /* SUGESTÃO: bordas delicadas */
+  --amm-rosa-medio:#f8d9eb;   /* SUGESTÃO: rosa um pouco mais forte para fundos e molduras */
+  --amm-rosa-borda:#f1cfe3;   /* SUGESTÃO: bordas delicadas */
   --amm-creme:#fff8fb;        /* SUGESTÃO: tom claro e quente de apoio */
   --amm-titulo:'Playfair Display',Georgia,serif;
   /* Clear Sans não está no Google Fonts. Se o tema já carregar Clear Sans, ela será usada.
@@ -54,28 +55,57 @@
 .amm img{max-width:100%;height:auto;display:block;border:0}
 .amm a{color:inherit}
 
+/* Estrutura */
 .amm-secao{padding:72px 20px}
 .amm-secao--branca{background:var(--amm-branco)}
-.amm-container{max-width:1040px;margin:0 auto}
+.amm-secao--padrao{
+  background-color:var(--amm-rosa);
+  background-image:
+    repeating-linear-gradient(45deg,rgba(103,27,41,.045) 0 1px,transparent 1px 46px),
+    repeating-linear-gradient(-45deg,rgba(103,27,41,.045) 0 1px,transparent 1px 46px);
+}
+.amm-container{max-width:1120px;margin:0 auto}
 .amm-estreito{max-width:720px;margin:0 auto}
 .amm-centro{text-align:center}
+.amm-duas{display:grid;gap:40px;align-items:center}
 
+/* Títulos: fonte reta, com itálico só nas palavras de destaque (<em>) */
 .amm h1,.amm h2,.amm h3{
   font-family:var(--amm-titulo);
-  font-style:italic;
+  font-style:normal;
   font-weight:500;
   color:var(--amm-vinho);
-  line-height:1.2;
+  line-height:1.22;
   letter-spacing:0;
   text-transform:none;
 }
-.amm h1{font-size:clamp(2.1rem,6.5vw,3.5rem)}
-.amm h2{font-size:clamp(1.65rem,4.6vw,2.4rem);margin-bottom:24px}
-.amm h3{font-size:1.25rem;margin-bottom:6px}
+.amm h1 em,.amm h2 em{font-style:italic;font-weight:500}
+.amm h1{font-size:clamp(2.05rem,6.4vw,3.4rem)}
+.amm h2{font-size:clamp(1.6rem,4.4vw,2.35rem);margin-bottom:22px}
+.amm h3{font-size:1.15rem;font-weight:600;margin-bottom:6px}
 .amm p + p{margin-top:16px}
 .amm strong{color:var(--amm-vinho);font-weight:600}
 
-.amm-abelha{width:44px;margin:0 auto 18px;opacity:.9}
+/* Selo acima dos títulos */
+.amm-selo{
+  display:block;font-family:var(--amm-titulo);font-size:.8rem;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--amm-vinho);margin-bottom:14px;
+}
+.amm-selo::before,.amm-selo::after{content:"\00B7";margin:0 .7em}
+
+/* Losango */
+.amm-losango{
+  width:52px;height:52px;margin:0 auto 18px;position:relative;
+  display:flex;align-items:center;justify-content:center;
+}
+.amm-losango::before{
+  content:"";position:absolute;inset:7px;background:var(--amm-vinho);
+  transform:rotate(45deg);border-radius:6px;
+  box-shadow:0 0 0 4px var(--amm-rosa),0 0 0 5px var(--amm-rosa-borda);
+}
+.amm-losango span{
+  position:relative;color:#fff;font-family:var(--amm-titulo);font-size:1.15rem;line-height:1;
+}
 
 /* Botão */
 .amm-botao{
@@ -84,101 +114,145 @@
   color:#fff !important;
   font-family:var(--amm-corpo);
   font-weight:600;
-  font-size:1.05rem;
+  font-size:1rem;
+  letter-spacing:.02em;
   line-height:1.3;
   text-decoration:none !important;
   text-align:center;
-  padding:18px 34px;
-  border-radius:999px;
+  padding:17px 32px;
+  border-radius:10px;
   border:0;
-  box-shadow:0 8px 22px rgba(103,27,41,.18);
+  box-shadow:0 10px 24px rgba(103,27,41,.18);
   transition:background .2s ease;
 }
 .amm-botao:hover,.amm-botao:focus{background:var(--amm-vinho-escuro);color:#fff !important}
 .amm-botao:focus-visible{outline:3px solid var(--amm-vinho);outline-offset:4px}
 .amm-acao{margin-top:36px;text-align:center}
 
-/* Topo */
-.amm-topo{padding:28px 20px 0;text-align:center}
-.amm-logo{width:200px;margin:0 auto}
-.amm-hero{padding:56px 20px 80px;text-align:center}
-.amm-hero h1{max-width:780px;margin:0 auto 24px}
-.amm-hero .amm-apoio{font-size:1.15rem;max-width:640px;margin:0 auto}
-.amm-hero .amm-complemento{
-  display:inline-block;margin-top:24px;padding:12px 22px;
-  background:var(--amm-branco);border:1px solid var(--amm-rosa-borda);
-  border-radius:16px;font-size:.98rem;max-width:560px;
+/* 1. Topo */
+.amm-hero{
+  background:linear-gradient(180deg,var(--amm-rosa) 0%,var(--amm-rosa-medio) 100%);
+  padding:28px 20px 64px;
 }
+.amm-hero .amm-duas{gap:28px}
+.amm-hero-foto{position:relative;max-width:300px;width:100%;margin:0 auto;order:-1}
+.amm-hero-foto img,.amm-sobre-foto img{
+  width:100%;aspect-ratio:4/5;object-fit:cover;background:var(--amm-rosa-medio);
+  border-radius:240px 240px 20px 20px;
+}
+.amm-hero-foto::before{
+  content:"";position:absolute;inset:-12px;border:1px solid var(--amm-vinho);opacity:.35;
+  border-radius:252px 252px 28px 28px;pointer-events:none;
+}
+.amm-enfeite{
+  position:absolute;width:64px;height:64px;background:var(--amm-branco);
+  border:1px solid var(--amm-rosa-borda);transform:rotate(45deg);border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 10px 24px rgba(103,27,41,.12);
+}
+.amm-enfeite img{width:34px !important;aspect-ratio:auto !important;border-radius:0 !important;background:none !important;transform:rotate(-45deg)}
+.amm-enfeite--1{left:-14px;bottom:70px}
+.amm-enfeite--2{right:-10px;top:90px;width:34px;height:34px;background:var(--amm-vinho);border:0}
+.amm-hero-texto{text-align:center}
+.amm-logo{width:190px;margin:0 auto 22px}
+.amm-hero h1{margin-bottom:20px}
+.amm-hero .amm-apoio{font-size:1.1rem}
+.amm-chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:0 0 22px}
+.amm-chip{
+  display:inline-flex;align-items:center;gap:8px;font-size:.88rem;color:var(--amm-vinho);
+  background:rgba(255,255,255,.7);border:1px solid var(--amm-rosa-borda);border-radius:999px;padding:6px 14px;
+}
+.amm-chip::before{content:"";width:7px;height:7px;background:var(--amm-vinho);transform:rotate(45deg)}
+.amm-hero .amm-complemento{margin-top:16px;font-size:.98rem}
+.amm-hero .amm-acao{margin-top:28px}
 
-/* Situações */
-.amm-situacoes{display:grid;gap:14px;margin-top:32px}
+/* 2. Identificação */
+.amm-situacoes{display:grid;gap:14px;margin-top:14px}
 .amm-situacoes li{
-  background:var(--amm-rosa);border-radius:18px;padding:18px 20px 18px 54px;
+  background:var(--amm-branco);border:1px solid var(--amm-rosa-borda);border-radius:14px;padding:18px 20px 18px 56px;
   position:relative;font-size:1.02rem;
 }
 .amm-situacoes li::before{
-  content:"?";position:absolute;left:18px;top:17px;width:24px;height:24px;border-radius:50%;
-  background:var(--amm-vinho);color:#fff;font-family:var(--amm-titulo);font-style:italic;
-  font-size:.9rem;line-height:24px;text-align:center;
+  content:"";position:absolute;left:19px;top:19px;width:22px;height:22px;
+  background:var(--amm-vinho);transform:rotate(45deg);border-radius:4px;
 }
-.amm-intro-lista{margin-top:32px;font-style:italic;color:var(--amm-vinho)}
-.amm-situacoes{margin-top:14px}
+.amm-situacoes li::after{
+  content:"?";position:absolute;left:19px;top:19px;width:22px;height:22px;color:#fff;
+  font-family:var(--amm-titulo);font-size:.9rem;line-height:22px;text-align:center;
+}
+.amm-intro-lista{margin-top:32px;font-weight:600;color:var(--amm-vinho)}
 
-/* Listas com marcador */
-.amm-checks{display:grid;gap:12px;margin-top:8px}
-.amm-checks li{position:relative;padding-left:34px}
-.amm-checks li::before{
-  content:"";position:absolute;left:4px;top:.5em;width:14px;height:8px;
-  border-left:2px solid var(--amm-vinho);border-bottom:2px solid var(--amm-vinho);
-  transform:rotate(-45deg);
+/* Listas com losango */
+.amm-lista{display:grid;gap:14px}
+.amm-lista li{position:relative;padding-left:30px}
+.amm-lista li::before{
+  content:"";position:absolute;left:3px;top:.55em;width:10px;height:10px;
+  background:var(--amm-vinho);transform:rotate(45deg);border-radius:2px;
 }
 .amm-nota{
-  margin-top:28px;padding:18px 20px;border-radius:16px;
+  margin-top:28px;padding:18px 20px;border-radius:14px;
   background:var(--amm-branco);border:1px solid var(--amm-rosa-borda);font-size:.98rem;
 }
 .amm-secao--branca .amm-nota{background:var(--amm-creme)}
 
-/* Cartões de análise */
-.amm-cartoes{display:grid;gap:16px;margin-top:8px}
-.amm-cartao{
-  background:var(--amm-branco);border:1px solid var(--amm-rosa-borda);
-  border-radius:20px;padding:24px;
-}
-.amm-cartao p{font-size:.98rem}
+/* 4. O que vou observar */
+.amm-grade{display:flex;flex-wrap:wrap;justify-content:center;margin:8px -10px 0}
+.amm-item{width:50%;padding:18px 10px;text-align:center}
+.amm-item h3{font-size:1.05rem}
+.amm-item p{font-size:.94rem}
 
-/* Passos */
-.amm-passos{display:grid;gap:18px;margin-top:8px;counter-reset:amm-passo}
-.amm-passo{position:relative;padding:4px 0 4px 64px;min-height:48px}
-.amm-passo::before{
-  counter-increment:amm-passo;content:counter(amm-passo);
-  position:absolute;left:0;top:0;width:46px;height:46px;border-radius:50%;
-  background:var(--amm-rosa);border:1px solid var(--amm-rosa-borda);color:var(--amm-vinho);
-  font-family:var(--amm-titulo);font-style:italic;font-size:1.3rem;line-height:44px;text-align:center;
+/* 5. Para quem é: celular decorativo */
+.amm-celular{
+  width:200px;margin:0 auto;padding:12px;border-radius:36px;background:var(--amm-vinho);
+  box-shadow:0 30px 50px rgba(103,27,41,.22);transform:rotate(-4deg);
+}
+.amm-celular-tela{background:var(--amm-rosa);border-radius:26px;padding:26px 16px 18px;text-align:center}
+.amm-celular-tela img{width:54px;margin:0 auto 10px}
+.amm-celular-nome{font-family:var(--amm-titulo);font-style:italic;color:var(--amm-vinho);font-size:1.05rem;line-height:1.25}
+.amm-celular-linha{height:6px;border-radius:6px;background:var(--amm-rosa-borda);margin:12px auto 0;width:80%}
+.amm-celular-linha + .amm-celular-linha{width:60%;margin-top:6px}
+.amm-celular-grade{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-top:16px}
+.amm-celular-grade span{aspect-ratio:1;background:var(--amm-branco);border-radius:4px}
+.amm-celular-grade span:nth-child(odd){background:var(--amm-rosa-medio)}
+
+/* 6. Passos */
+.amm-passos{display:grid;gap:22px;margin-top:8px}
+.amm-passo{position:relative;padding-left:68px;min-height:52px}
+.amm-passo .amm-losango{position:absolute;left:0;top:-4px;margin:0}
+
+/* 8. O que leva */
+.amm-ganhos{display:grid;gap:14px;margin-top:28px}
+.amm-ganhos li{
+  background:var(--amm-branco);border:1px solid var(--amm-rosa-borda);border-radius:14px;
+  padding:18px 20px 18px 48px;position:relative;
+}
+.amm-ganhos li::before{
+  content:"";position:absolute;left:20px;top:1.55em;width:10px;height:10px;
+  background:var(--amm-vinho);transform:rotate(45deg);border-radius:2px;
 }
 
-/* Sobre */
-.amm-sobre{display:grid;gap:36px;align-items:center}
-.amm-foto{
-  width:100%;max-width:380px;margin:0 auto;aspect-ratio:4/5;object-fit:cover;
-  border-radius:200px 200px 24px 24px;background:var(--amm-rosa);
-}
+/* 9. Sobre */
+.amm-sobre{background:linear-gradient(180deg,var(--amm-rosa-medio) 0%,var(--amm-rosa) 100%)}
+.amm-sobre-foto{max-width:320px;width:100%;margin:0 auto;order:-1}
+.amm-sobre .amm-selo{margin-bottom:6px}
+.amm-sobre .amm-selo::before,.amm-sobre .amm-selo::after{content:none}
 
-/* Investimento */
+/* 10. Investimento */
 .amm-preco{
   max-width:520px;margin:8px auto 0;background:var(--amm-branco);
-  border:1px solid var(--amm-rosa-borda);border-radius:28px;padding:40px 28px;text-align:center;
+  border:1px solid var(--amm-rosa-borda);border-radius:24px;padding:40px 28px;text-align:center;
   box-shadow:0 18px 40px rgba(103,27,41,.08);
 }
 .amm-preco-nome{font-family:var(--amm-titulo);font-style:italic;font-size:1.35rem;color:var(--amm-vinho)}
-.amm-preco-rotulo{margin-top:20px;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase}
+.amm-preco-rotulo{margin-top:20px;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase}
 .amm-preco-valor{font-family:var(--amm-titulo);font-weight:600;font-size:3.2rem;line-height:1.1;color:var(--amm-vinho)}
 .amm-preco-cond{margin-top:4px}
-.amm-preco .amm-checks{text-align:left;margin:28px 0 0}
+.amm-preco .amm-lista{text-align:left;margin:28px 0 0}
 
-/* FAQ */
+/* 11. Perguntas frequentes */
 .amm-faq{display:grid;gap:12px}
 .amm-faq details{
-  background:var(--amm-branco);border:1px solid var(--amm-rosa-borda);border-radius:16px;padding:0 20px;
+  background:var(--amm-branco);border:1px solid var(--amm-rosa-borda);border-radius:14px;padding:0 20px;
 }
 .amm-faq summary{
   cursor:pointer;list-style:none;padding:18px 32px 18px 0;position:relative;
@@ -189,54 +263,91 @@
   content:"+";position:absolute;right:0;top:50%;transform:translateY(-50%);
   font-size:1.5rem;font-weight:400;line-height:1;
 }
-.amm-faq details[open] summary::after{content:"–"}
+.amm-faq details[open] summary::after{content:"\2212"}
 .amm-faq summary:focus-visible{outline:2px solid var(--amm-vinho);outline-offset:4px;border-radius:8px}
 .amm-faq details p{padding:0 0 20px}
 
-/* Encerramento e rodapé */
-.amm-final h2{max-width:760px;margin-left:auto;margin-right:auto}
-.amm-rodape{background:var(--amm-branco);padding:40px 20px;text-align:center;font-size:.92rem}
-.amm-rodape .amm-logo{width:150px;margin-bottom:16px}
-.amm-rodape-links{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 20px;margin-top:10px}
+/* 12. Encerramento e rodapé */
+.amm-final h2{max-width:780px;margin-left:auto;margin-right:auto}
+.amm-abelha{width:46px;margin:0 auto 18px}
+.amm-rodape{
+  background:var(--amm-branco);padding:28px 20px;font-size:.88rem;
+  display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;justify-content:center;text-align:center;
+}
+.amm-rodape .amm-logo{width:120px;margin:0}
+.amm-rodape-links{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 18px}
 .amm-rodape-links a{color:var(--amm-vinho);text-decoration:underline}
 
-@media (min-width:720px){
+@media (min-width:760px){
   .amm{font-size:18px}
   .amm-secao{padding:96px 32px}
-  .amm-logo{width:240px}
+  .amm-duas{grid-template-columns:1fr 1fr;gap:64px}
   .amm-situacoes{grid-template-columns:1fr 1fr}
-  .amm-cartoes{grid-template-columns:repeat(2,1fr)}
-  .amm-sobre{grid-template-columns:5fr 7fr;gap:56px}
+  .amm-item{width:25%}
+  .amm-ganhos{grid-template-columns:1fr 1fr}
+  .amm-celular{width:260px}
+  .amm-hero-foto{max-width:420px}
+  .amm-sobre-foto{max-width:400px}
+
+  .amm-hero{padding:56px 32px 96px}
+  .amm-hero .amm-duas{grid-template-columns:7fr 6fr;gap:56px}
+  .amm-hero-foto,.amm-sobre-foto{order:0}
+  .amm-hero-texto{text-align:left}
+  .amm-hero .amm-logo{margin:0 0 28px;width:210px}
+  .amm-chips{justify-content:flex-start}
+  .amm-hero .amm-acao{text-align:left}
+
+  .amm-sobre .amm-duas{grid-template-columns:7fr 5fr}
 }
-@media (min-width:980px){
-  .amm-cartoes{grid-template-columns:repeat(3,1fr)}
+@media (min-width:1000px){
+  .amm-passos{grid-template-columns:repeat(5,1fr);gap:20px;position:relative}
+  .amm-passos::before{
+    content:"";position:absolute;top:22px;left:10%;right:10%;height:1px;
+    background:var(--amm-rosa-borda);
+  }
+  .amm-passo{padding-left:0;text-align:center}
+  .amm-passo .amm-losango{position:relative;top:auto;margin:0 auto 16px}
+  .amm-passo p{font-size:.95rem}
 }
 @media (prefers-reduced-motion:reduce){.amm-botao{transition:none}}
 </style>
 
 <div class="amm">
 
-  <!-- TOPO -->
-  <header class="amm-topo">
-    <!-- PENDENTE: troque o src pela URL da logo enviada à Biblioteca de Mídia do WordPress (arquivo imagens/logo-a-mel-do-mkt.png) -->
-    <img class="amm-logo" src="imagens/logo-a-mel-do-mkt.png" alt="A Mel do MKT" width="900" height="167">
-  </header>
-
   <!-- 1. ABERTURA -->
   <section class="amm-hero">
-    <h1>Seu Instagram comunica o valor do seu trabalho?</h1>
-    <p class="amm-apoio">Na Análise Estratégica de Perfil, eu avalio o seu Instagram e te mostro o que ajustar para apresentar seu negócio com mais clareza e se comunicar com as mulheres que você deseja atender.</p>
-    <p class="amm-complemento">Uma análise personalizada, com estudo prévio do seu negócio e um encontro online de 1 hora comigo.</p>
-    <div class="amm-acao">
-      <!-- PENDENTE: link de pagamento -->
-      <a class="amm-botao" href="INSERIR-LINK-DE-PAGAMENTO">Quero minha análise estratégica</a>
+    <div class="amm-container amm-duas">
+      <div class="amm-hero-texto">
+        <!-- PENDENTE: troque o src pela URL da logo enviada à Biblioteca de Mídia do WordPress (arquivo imagens/logo-a-mel-do-mkt.png) -->
+        <img class="amm-logo" src="imagens/logo-a-mel-do-mkt.png" alt="A Mel do MKT" width="900" height="167">
+        <div class="amm-chips">
+          <span class="amm-chip">Análise personalizada</span>
+          <span class="amm-chip">Encontro online de 1 hora</span>
+        </div>
+        <h1>Seu Instagram comunica o <em>valor do seu trabalho</em>?</h1>
+        <p class="amm-apoio">Na Análise Estratégica de Perfil, eu avalio o seu Instagram e te mostro o que ajustar para apresentar seu negócio com mais clareza e se comunicar com as mulheres que você deseja atender.</p>
+        <p class="amm-complemento">Uma análise personalizada, com <strong>estudo prévio do seu negócio</strong> e um <strong>encontro online de 1 hora comigo</strong>.</p>
+        <div class="amm-acao">
+          <!-- PENDENTE: link de pagamento -->
+          <a class="amm-botao" href="INSERIR-LINK-DE-PAGAMENTO">Quero minha análise estratégica</a>
+        </div>
+      </div>
+      <figure class="amm-hero-foto">
+        <!-- PENDENTE: troque o src pela URL de uma foto sua (vertical, cerca de 840 x 1050 px, WebP ou JPG, até 180 KB) -->
+        <img src="INSERIR-URL-DA-FOTO-DO-TOPO" alt="Melanie Fernanda, estrategista digital da A Mel do MKT" width="840" height="1050">
+        <span class="amm-enfeite amm-enfeite--1">
+          <!-- PENDENTE: troque o src pela URL da abelha na Biblioteca de Mídia (arquivo imagens/abelha.png) -->
+          <img src="imagens/abelha.png" alt="" width="160" height="126">
+        </span>
+        <span class="amm-enfeite amm-enfeite--2" aria-hidden="true"></span>
+      </figure>
     </div>
   </section>
 
   <!-- 2. IDENTIFICAÇÃO -->
-  <section class="amm-secao amm-secao--branca">
+  <section class="amm-secao">
     <div class="amm-estreito">
-      <h2>Você sabe que precisa divulgar seu trabalho, mas sente que falta direção?</h2>
+      <h2>Você sabe que precisa divulgar seu trabalho, mas sente que <em>falta direção</em>?</h2>
       <p>Você posta sem saber se está falando com as pessoas certas? Tem dificuldade para explicar os diferenciais dos seus serviços? Sente que precisa da ajuda de uma especialista para ajustar isso?</p>
       <p>Sem clareza, decidir o que postar fica mais difícil. A análise é um momento para olhar para o seu perfil com intenção e entender quais ajustes fazem sentido para o seu negócio.</p>
 
@@ -251,60 +362,54 @@
   </section>
 
   <!-- 3. O QUE É -->
-  <section class="amm-secao">
-    <div class="amm-estreito">
-      <h2>Um olhar estratégico para o seu negócio, que vai te dar um direcionamento profissional.</h2>
+  <section class="amm-secao amm-secao--branca">
+    <div class="amm-estreito amm-centro">
+      <span class="amm-selo">Análise Estratégica de Perfil</span>
+      <h2>Um olhar estratégico para o seu negócio, que vai te dar um <em>direcionamento profissional</em>.</h2>
       <p>A Análise Estratégica de Perfil é um serviço individual e personalizado. Antes do nosso encontro, você preenche um formulário para que eu conheça seu negócio, seus serviços, seu público e seus objetivos.</p>
       <p>Com essas informações, estudo o seu posicionamento e analiso como ele aparece no Instagram. Depois, em um encontro online de 1 hora, apresento minha avaliação, explico os ajustes recomendados e respondo às suas dúvidas.</p>
       <p>Você sai do encontro com direcionamentos para aplicar no seu perfil e mais clareza sobre como apresentar o seu trabalho.</p>
     </div>
   </section>
 
-  <!-- 4. PARA QUEM É -->
-  <section class="amm-secao amm-secao--branca">
-    <div class="amm-estreito">
-      <h2>Essa análise é para você que…</h2>
-      <ul class="amm-checks">
-        <li>É uma empreendedora que presta serviços para mulheres.</li>
-        <li>Quer apresentar seu trabalho de uma forma mais clara e coerente.</li>
-        <li>Precisa de direção para organizar a comunicação do seu Instagram.</li>
-        <li>Quer entender o que pode melhorar antes de continuar produzindo conteúdo sem uma direção definida.</li>
-        <li>Está disposta a aplicar os ajustes recomendados.</li>
-      </ul>
-      <p class="amm-nota">Pensada para profissionais como maquiadoras, profissionais da beleza e estética, nutricionistas e psicólogas que atendem mulheres.</p>
-    </div>
-  </section>
-
-  <!-- 5. O QUE SERÁ ANALISADO -->
-  <section class="amm-secao">
-    <div class="amm-container">
-      <h2 class="amm-centro">O que eu vou observar no seu perfil</h2>
-      <div class="amm-cartoes">
-        <div class="amm-cartao">
+  <!-- 4. O QUE SERÁ ANALISADO -->
+  <section class="amm-secao amm-secao--padrao">
+    <div class="amm-container amm-centro">
+      <span class="amm-selo">Análise Estratégica de Perfil</span>
+      <h2>O que eu vou <em>observar</em> no seu perfil</h2>
+      <div class="amm-grade">
+        <div class="amm-item">
+          <div class="amm-losango"><span>01</span></div>
           <h3>Posicionamento e diferenciais</h3>
           <p>Como você apresenta seu trabalho e o que ajuda a diferenciá-lo.</p>
         </div>
-        <div class="amm-cartao">
+        <div class="amm-item">
+          <div class="amm-losango"><span>02</span></div>
           <h3>Público</h3>
           <p>Se a comunicação está alinhada às mulheres que você deseja atender.</p>
         </div>
-        <div class="amm-cartao">
+        <div class="amm-item">
+          <div class="amm-losango"><span>03</span></div>
           <h3>Foto de perfil</h3>
           <p>Se ela facilita sua identificação e combina com a imagem profissional que deseja transmitir.</p>
         </div>
-        <div class="amm-cartao">
+        <div class="amm-item">
+          <div class="amm-losango"><span>04</span></div>
           <h3>Bio</h3>
           <p>Se explica com clareza quem você é, o que oferece e qual é o próximo passo para quem se interessa.</p>
         </div>
-        <div class="amm-cartao">
+        <div class="amm-item">
+          <div class="amm-losango"><span>05</span></div>
           <h3>Destaques</h3>
           <p>Se ajudam a visitante a encontrar informações importantes sobre seu trabalho e seus serviços.</p>
         </div>
-        <div class="amm-cartao">
+        <div class="amm-item">
+          <div class="amm-losango"><span>06</span></div>
           <h3>Conteúdos</h3>
           <p>O que suas publicações comunicam e quais ajustes podem aproximá-las dos objetivos do negócio.</p>
         </div>
-        <div class="amm-cartao">
+        <div class="amm-item">
+          <div class="amm-losango"><span>07</span></div>
           <h3>Coerência do perfil</h3>
           <p>Se os diferentes elementos do Instagram apresentam uma mensagem consistente.</p>
         </div>
@@ -316,37 +421,69 @@
     </div>
   </section>
 
-  <!-- 6. COMO FUNCIONA -->
+  <!-- 5. PARA QUEM É -->
   <section class="amm-secao amm-secao--branca">
-    <div class="amm-estreito">
-      <h2>Como acontece a sua análise</h2>
+    <div class="amm-container amm-duas">
+      <div class="amm-celular" aria-hidden="true">
+        <div class="amm-celular-tela">
+          <!-- PENDENTE: troque o src pela URL da abelha na Biblioteca de Mídia -->
+          <img src="imagens/abelha.png" alt="" width="160" height="126" loading="lazy">
+          <p class="amm-celular-nome">Análise Estratégica de Perfil</p>
+          <div class="amm-celular-linha"></div>
+          <div class="amm-celular-linha"></div>
+          <div class="amm-celular-grade"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        </div>
+      </div>
+      <div>
+        <h2>Essa análise é <em>para você</em> que…</h2>
+        <ul class="amm-lista">
+          <li>É uma empreendedora que presta serviços para mulheres.</li>
+          <li>Quer apresentar seu trabalho de uma forma mais clara e coerente.</li>
+          <li>Precisa de direção para organizar a comunicação do seu Instagram.</li>
+          <li>Quer entender o que pode melhorar antes de continuar produzindo conteúdo sem uma direção definida.</li>
+          <li>Está disposta a aplicar os ajustes recomendados.</li>
+        </ul>
+        <p class="amm-nota">Pensada para profissionais como maquiadoras, profissionais da beleza e estética, nutricionistas e psicólogas que atendem mulheres.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. COMO FUNCIONA -->
+  <section class="amm-secao">
+    <div class="amm-container">
+      <h2 class="amm-centro">Como acontece a <em>sua análise</em></h2>
       <ol class="amm-passos">
         <li class="amm-passo">
+          <div class="amm-losango"><span>1</span></div>
           <h3>Você realiza a compra</h3>
           <p>O primeiro passo é efetuar o pagamento pela plataforma.</p>
         </li>
         <li class="amm-passo">
+          <div class="amm-losango"><span>2</span></div>
           <h3>Você preenche o formulário</h3>
           <p>Após a compra, você responde às perguntas sobre seu negócio, seus serviços, seu público e seus objetivos.</p>
         </li>
         <li class="amm-passo">
+          <div class="amm-losango"><span>3</span></div>
           <h3>Eu preparo a sua análise</h3>
           <p>Estudo suas respostas e avalio o perfil antes do encontro.</p>
         </li>
         <li class="amm-passo">
+          <div class="amm-losango"><span>4</span></div>
           <h3>Nos encontramos online</h3>
           <p>Durante 1 hora, apresento a análise, explico as recomendações e você pode tirar suas dúvidas.</p>
         </li>
         <li class="amm-passo">
+          <div class="amm-losango"><span>5</span></div>
           <h3>Você aplica os direcionamentos</h3>
           <p>Com base no que conversamos, você terá ações para ajustar seu perfil e sua comunicação.</p>
         </li>
       </ol>
 
-      <!-- PENDENTE: informações operacionais. Quando estiverem definidas, preencha e remova
-           os marcadores de comentário (<!- - e - ->) deste bloco para ele aparecer na página.
-      <div class="amm-nota">
-        <ul class="amm-checks">
+      <!-- PENDENTE: informações operacionais. Quando estiverem definidas, preencha, apague esta
+           linha de aviso e a linha "FIM DO BLOCO PENDENTE" para o bloco aparecer na página.
+      <div class="amm-nota amm-estreito">
+        <ul class="amm-lista">
           <li><strong>Envio do formulário:</strong> [PREENCHER]</li>
           <li><strong>Agendamento:</strong> [PREENCHER]</li>
           <li><strong>Prazo entre o envio do formulário e o encontro:</strong> [PREENCHER]</li>
@@ -358,10 +495,14 @@
   </section>
 
   <!-- 7. O QUE ESTÁ INCLUÍDO -->
-  <section class="amm-secao">
-    <div class="amm-estreito">
-      <h2>O que está incluído</h2>
-      <ul class="amm-checks">
+  <section class="amm-secao amm-secao--branca">
+    <div class="amm-container amm-duas">
+      <div>
+        <h2>O que está <em>incluído</em></h2>
+        <p>Tudo o que faz parte da sua Análise Estratégica de Perfil:</p>
+        <p class="amm-nota">O serviço não inclui gestão mensal do Instagram, execução dos ajustes, criação de artes ou produção de conteúdo.</p>
+      </div>
+      <ul class="amm-lista">
         <li>Formulário para conhecer o seu negócio.</li>
         <li>Estudo prévio das respostas e do perfil.</li>
         <li>Análise personalizada do Instagram.</li>
@@ -371,16 +512,17 @@
         <li>PDF com diagnóstico completo.</li>
         <li>Gravação da nossa reunião para você assistir sempre que precisar.</li>
       </ul>
-      <p class="amm-nota">O serviço não inclui gestão mensal do Instagram, execução dos ajustes, criação de artes ou produção de conteúdo.</p>
     </div>
   </section>
 
   <!-- 8. O QUE A CLIENTE LEVA -->
-  <section class="amm-secao amm-secao--branca">
-    <div class="amm-estreito">
-      <h2>Mais clareza para dar os próximos passos</h2>
-      <p>A proposta é que você entenda como o seu perfil apresenta seu negócio hoje, reconheça os pontos que precisam de atenção e saiba por onde começar a ajustar sua comunicação.</p>
-      <ul class="amm-checks" style="margin-top:28px">
+  <section class="amm-secao amm-secao--padrao">
+    <div class="amm-container">
+      <div class="amm-estreito amm-centro">
+        <h2>Mais clareza para dar os <em>próximos passos</em></h2>
+        <p>A proposta é que você entenda como o seu perfil apresenta seu negócio hoje, reconheça os pontos que precisam de atenção e saiba por onde começar a ajustar sua comunicação.</p>
+      </div>
+      <ul class="amm-ganhos amm-estreito">
         <li>Clareza sobre a mensagem que seu perfil transmite.</li>
         <li>Direção para apresentar melhor seus serviços.</li>
         <li>Recomendações alinhadas ao seu negócio e ao seu público.</li>
@@ -394,35 +536,34 @@
   </section>
 
   <!-- 9. SOBRE A MEL -->
-  <section class="amm-secao">
-    <div class="amm-container amm-sobre">
-      <figure>
-        <!-- PENDENTE: troque o src pela URL da sua foto na Biblioteca de Mídia.
-             Recomendado: foto vertical, cerca de 760 x 950 px, em WebP ou JPG, até 150 KB. -->
-        <img class="amm-foto" src="INSERIR-URL-DA-FOTO-DA-MEL" alt="Melanie Fernanda, estrategista digital da A Mel do MKT" width="760" height="950" loading="lazy">
-      </figure>
+  <section class="amm-secao amm-sobre">
+    <div class="amm-container amm-duas">
       <div>
-        <!-- PENDENTE: troque o src pela URL da abelha na Biblioteca de Mídia (arquivo imagens/abelha.png) -->
-        <img class="amm-abelha" src="imagens/abelha.png" alt="" width="160" height="126" loading="lazy" style="margin-left:0">
-        <h2>Quem vai olhar para o seu perfil</h2>
+        <span class="amm-selo">Quem vai olhar para o seu perfil</span>
+        <h2>Melanie <em>Fernanda</em></h2>
         <p>Eu sou a Mel, estrategista digital e criadora da A Mel do MKT.</p>
         <p>Antes de trabalhar com estratégia e conteúdo, vivi por quase dez anos a rotina de maquiadora. Conheço o desafio de atender clientes, cuidar do negócio e ainda encontrar tempo e ideias para divulgar o próprio trabalho.</p>
         <p>Hoje, ajudo empreendedoras que prestam serviços para mulheres relacionados à beleza e autoestima a se comunicar com mais clareza no Instagram.</p>
         <p>Meu objetivo é te ajudar a entender o que faz sentido para o seu negócio e transformar essa compreensão em ações práticas.</p>
       </div>
+      <figure class="amm-sobre-foto">
+        <!-- PENDENTE: troque o src pela URL de uma foto sua (pode ser diferente da foto do topo).
+             Recomendado: vertical, cerca de 800 x 1000 px, WebP ou JPG, até 150 KB. -->
+        <img src="INSERIR-URL-DA-FOTO-DA-MEL" alt="Melanie Fernanda, estrategista digital da A Mel do MKT" width="800" height="1000" loading="lazy">
+      </figure>
     </div>
   </section>
 
   <!-- 10. INVESTIMENTO -->
   <section class="amm-secao amm-secao--branca" id="investimento">
     <div class="amm-container">
-      <h2 class="amm-centro">Invista em uma direção mais clara para o seu perfil</h2>
+      <h2 class="amm-centro">Invista em uma <em>direção mais clara</em> para o seu perfil</h2>
       <div class="amm-preco">
         <p class="amm-preco-nome">Análise Estratégica de Perfil</p>
         <p class="amm-preco-rotulo">Valor de lançamento</p>
         <p class="amm-preco-valor">R$ 197</p>
         <p class="amm-preco-cond">em até 12x no cartão</p>
-        <ul class="amm-checks">
+        <ul class="amm-lista">
           <li>Estudo prévio do seu negócio e do seu perfil</li>
           <li>Encontro individual online de 1 hora</li>
           <li>PDF com diagnóstico completo</li>
@@ -439,7 +580,7 @@
   <!-- 11. PERGUNTAS FREQUENTES -->
   <section class="amm-secao">
     <div class="amm-estreito">
-      <h2 class="amm-centro">Perguntas frequentes</h2>
+      <h2 class="amm-centro">Perguntas <em>frequentes</em></h2>
       <div class="amm-faq">
         <details>
           <summary>A análise é personalizada?</summary>
@@ -470,7 +611,7 @@
           <p>Sim. Você recebe o PDF com o diagnóstico completo e a gravação da nossa reunião para assistir sempre que precisar.</p>
         </details>
         <!-- PENDENTE: publique estas perguntas somente quando as respostas estiverem definidas.
-             Para exibir, preencha e remova os marcadores de comentário deste bloco.
+             Para exibir, preencha, apague esta linha de aviso e a linha "FIM DO BLOCO PENDENTE".
         <details>
           <summary>Como funciona o agendamento?</summary>
           <p>[INSERIR O PROCESSO DEFINIDO]</p>
@@ -489,7 +630,7 @@
     <div class="amm-estreito">
       <!-- PENDENTE: troque o src pela URL da abelha na Biblioteca de Mídia -->
       <img class="amm-abelha" src="imagens/abelha.png" alt="" width="160" height="126" loading="lazy">
-      <h2>Seu trabalho só será reconhecido se o seu perfil estiver pronto para comunicá-lo.</h2>
+      <h2>Seu trabalho só será reconhecido se o seu perfil estiver <em>pronto para comunicá-lo</em>.</h2>
       <p>Se você quer entender como se posicionar no seu Instagram e ter uma direção mais clara para apresentar seu negócio, a Análise Estratégica de Perfil é o próximo passo.</p>
       <div class="amm-acao">
         <!-- PENDENTE: link de pagamento -->
@@ -500,17 +641,16 @@
 
   <!-- RODAPÉ -->
   <footer class="amm-rodape">
-    <!-- PENDENTE: troque o src pela URL da logo na Biblioteca de Mídia -->
-    <img class="amm-logo" src="imagens/logo-a-mel-do-mkt.png" alt="A Mel do MKT" width="900" height="167" loading="lazy">
-    <p>Melanie Fernanda · Estrategista digital</p>
-    <!-- PENDENTE: preencha os links do rodapé e remova os marcadores de comentário deste bloco.
+    <p>© A Mel do MKT | Todos os direitos reservados</p>
+    <!-- PENDENTE: preencha os links do rodapé, apague esta linha de aviso e a linha "FIM DO BLOCO PENDENTE".
     <p class="amm-rodape-links">
       <a href="[INSERIR-LINK-DE-CONTATO]">Contato</a>
       <a href="[INSERIR-LINK-POLITICA-DE-PRIVACIDADE]">Política de privacidade</a>
       <a href="[INSERIR-LINK-TERMOS-DE-USO]">Termos de uso</a>
     </p>
     FIM DO BLOCO PENDENTE -->
-    <p style="margin-top:12px">© A Mel do MKT. Todos os direitos reservados.</p>
+    <!-- PENDENTE: troque o src pela URL da logo na Biblioteca de Mídia -->
+    <img class="amm-logo" src="imagens/logo-a-mel-do-mkt.png" alt="A Mel do MKT" width="900" height="167" loading="lazy">
   </footer>
 
 </div>
